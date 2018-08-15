@@ -30,6 +30,8 @@ module.exports = (env = {}) => {
       compress: true,
       hot: true,
       open: true
+      // if don't use hashbrowswer
+      // historyApiFallback: true
     },
     module: {
       rules: [
