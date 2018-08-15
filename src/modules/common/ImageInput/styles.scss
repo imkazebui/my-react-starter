@@ -1,0 +1,25 @@
+// #choose-image {
+  
+//   border: 1px solid;
+
+//   label {
+//     height: 20vw;
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   input[type='file'] { display: none; }
+// }
+
+#image-input {
+  label {
+    width: 100%;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  input[type='file'] { display: none; }
+}
