@@ -32,20 +32,20 @@ export const TBPagination = ({ total_pages, page, onClick }) => {
 	const total = parseInt(total_pages);
 	const current = parseInt(page);
 	console.log('current', current, total);
-	const isFirst = current === 0 ? true : false;
-	const isLast = current === total - 1 ? true : false;
-	let beforeCurrent = 0;
-	let afterCurrent = total - 1;
+	const isFirst = current === 1 ? true : false;
+	const isLast = current === total ? true : false;
+	let beforeCurrent = 1;
+	let afterCurrent = total;
 	const itemArr = [];
 
-	if (current + 3 <= total - 1) afterCurrent = current + 3;
-	if (current - 3 >= 0) beforeCurrent = current - 3;
+	if (current + 3 <= total) afterCurrent = current + 3;
+	if (current - 3 >= 1) beforeCurrent = current - 3;
 
 	for (let i = beforeCurrent; i <= afterCurrent; i++) {
-		console.log('compare', current === i, current, i);
+		const isActive = current === i;
 		const item = (
-			<PaginationItem active={current === i} key={i}>
-				<PaginationLink onClick={e => onClick(i)}>{i + 1}</PaginationLink>
+			<PaginationItem active={isActive} key={i}>
+				<PaginationLink onClick={e => (isActive ? null : onClick(i))}>{i}</PaginationLink>
 			</PaginationItem>
 		);
 		itemArr.push(item);
@@ -53,12 +53,12 @@ export const TBPagination = ({ total_pages, page, onClick }) => {
 
 	return (
 		<Pagination className="float-right">
-			<PaginationItem disabled={isFirst} onClick={e => onClick(current - 1)}>
-				<PaginationLink previous>Trước</PaginationLink>
+			<PaginationItem disabled={isFirst} onClick={e => (isFirst ? null : onClick(current - 1))}>
+				<PaginationLink previous>Prev</PaginationLink>
 			</PaginationItem>
 			{itemArr}
-			<PaginationItem disabled={isLast} onClick={e => onClick(current + 1)}>
-				<PaginationLink next>Sau</PaginationLink>
+			<PaginationItem disabled={isLast} onClick={e => (isLast ? null : onClick(current + 1))}>
+				<PaginationLink next>Next</PaginationLink>
 			</PaginationItem>
 		</Pagination>
 	);
