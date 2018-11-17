@@ -1,5 +1,5 @@
 // #choose-image {
-  
+
 //   border: 1px solid;
 
 //   label {
@@ -14,12 +14,16 @@
 // }
 
 #image-input {
-  label {
-    width: 100%;
-    img {
-      height: auto;
-      width: 100%;
-    }
-  }
-  input[type='file'] { display: none; }
+	label {
+		width: 100%;
+		img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+		}
+	}
+	input[type='file'] {
+		display: none;
+	}
 }
